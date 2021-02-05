@@ -1,0 +1,18 @@
+# AudioBook
+Your own Audible...
+# in your terminal type..
+#pip install pyttsx3
+#pip install pyPDF2
+import pyttsx3
+import PyPDF2
+
+book=open('stories.pdf','rb')
+pdfreader=PyPDF2.PdfFileReader(book)
+pages=pdfreader.numPages
+print(pages)
+speaker=pyttsx3.init()
+page=pdfreader.getPage(0)
+text=page.extractText()
+speaker.say(text)
+
+speaker.runAndWait()
